@@ -5,6 +5,16 @@ public class HillCipher {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        /*
+         * F, A, H
+         * I, M, K
+         * H, A, N
+         */
+        /*
+         * 5, 0, 7
+         * 8, 12, 10
+         * 7, 0, 13
+         */
         int[][] keyMatrix = {
             {6, 24, 1},
             {13, 16, 10},
