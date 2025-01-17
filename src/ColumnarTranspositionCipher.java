@@ -3,7 +3,7 @@ import java.util.*;
 public class ColumnarTranspositionCipher {
 
     public static String encrypt(String plaintext, String key) {
-        plaintext = plaintext.replaceAll("\\s+", "").toUpperCase();
+        plaintext =plaintext.toUpperCase();
         key = key.toUpperCase();
 
         int keyLength = key.length();
@@ -17,12 +17,11 @@ public class ColumnarTranspositionCipher {
                 if (index < plaintext.length()) {
                     grid[i][j] = plaintext.charAt(index++);
                 } else {
-                    grid[i][j] = 'X'; // Padding character
+                    grid[i][j] = '_';
                 }
             }
         }
 
-        // Determine column order based on key
         Integer[] columnOrder = getColumnOrder(key);
 
         // Read columns in the specified order
@@ -46,7 +45,6 @@ public class ColumnarTranspositionCipher {
         // Determine column order based on key
         Integer[] columnOrder = getColumnOrder(key);
 
-        // Fill the grid column by column
         int index = 0;
         for (int col : columnOrder) {
             for (int row = 0; row < rows; row++) {
@@ -54,7 +52,6 @@ public class ColumnarTranspositionCipher {
             }
         }
 
-        // Read rows to reconstruct plaintext
         StringBuilder plaintext = new StringBuilder();
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < keyLength; j++) {
@@ -62,8 +59,7 @@ public class ColumnarTranspositionCipher {
             }
         }
 
-        // Remove padding
-        return plaintext.toString().replace("X", "");
+        return plaintext.toString().replace("_", "");
     }
 
     private static Integer[] getColumnOrder(String key) {
