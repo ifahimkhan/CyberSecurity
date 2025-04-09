@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class HashFunctionDemo {
 
-    // Method to generate hash using the specified algorithm
     public static String generateHash(String input, String algorithm) {
         try {
             MessageDigest digest = MessageDigest.getInstance(algorithm);
@@ -27,7 +26,6 @@ public class HashFunctionDemo {
         System.out.print("Enter input text: ");
         String inputText = scanner.nextLine();
 
-        // Generating hash values for different algorithms
         System.out.println("\nGenerated Hashes:");
         System.out.println("MD5    : " + generateHash(inputText, "MD5"));
         System.out.println("SHA-1  : " + generateHash(inputText, "SHA-1"));
